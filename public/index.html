@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ContratoCorp™ - Gestão de Contratos</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header>
+    <div class="logo">ContratoCorp™</div>
+    <nav class="navbar">
+      <ul class="nav-links">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="contratos.html">Contratos</a></li>
+        <li><a href="gerador.html">Gerar Contrato</a></li>
+      </ul>
+    </nav>
+    <button id="modoBtn" title="Alternar Modo Escuro">🌙</button>
+  </header>
+
+  <main>
+    <section>
+      <h1>Bem-vindo à ContratoCorp™</h1>
+      <p>Simplificando a gestão e assinatura de contratos.</p>
+    </section>
+
+    <section>
+      <h2>Cadastrar Contrato</h2>
+      <form id="contratoForm">
+        <label for="titulo">Título do Contrato</label>
+        <input type="text" id="titulo" name="titulo" required />
+
+        <label for="conteudo">Conteúdo</label>
+        <textarea id="conteudo" name="conteudo" rows="5" required></textarea>
+
+        <label for="assinatura">Assinatura</label>
+        <input type="text" id="assinatura" name="assinatura" required />
+
+        <button type="submit">Salvar Contrato</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Buscar Contrato</h2>
+      <input type="text" id="buscaInput" placeholder="Digite o título do contrato..." />
+      <button onclick="buscarContrato()">Buscar</button>
+      <div id="resultadoBusca"></div>
+    </section>
+  </main>
+
+  <div class="loader" id="loader"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

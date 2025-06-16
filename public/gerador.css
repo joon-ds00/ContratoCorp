@@ -1,0 +1,121 @@
+:root {
+  --bg-header-light: #004080;
+  --text-header-light: white;
+  --bg-body-light: #f4f4f4;
+  --text-body-light: #333;
+
+  --bg-header-dark: #222;
+  --text-header-dark: #eee;
+  --bg-body-dark: #121212;
+  --text-body-dark: #f9f9f9;
+
+  --transition-time: 0.3s;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--bg-body-light);
+  color: var(--text-body-light);
+  margin: 0;
+  padding: 0;
+  transition: background var(--transition-time), color var(--transition-time);
+}
+
+body.dark-mode {
+  background: var(--bg-body-dark);
+  color: var(--text-body-dark);
+}
+
+header {
+  background-color: var(--bg-header-light);
+  color: var(--text-header-light);
+  padding: 1em 2em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  transition: background-color var(--transition-time), color var(--transition-time);
+}
+
+body.dark-mode header {
+  background-color: var(--bg-header-dark);
+  color: var(--text-header-dark);
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.5rem;
+  user-select: none;
+}
+
+#modoBtn {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: color var(--transition-time);
+}
+
+main {
+  padding: 2em;
+  max-width: 800px;
+  margin: auto;
+}
+
+section {
+  background: white;
+  padding: 1.5em 2em;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  margin-bottom: 2em;
+  transition: background var(--transition-time), box-shadow var(--transition-time);
+}
+
+body.dark-mode section {
+  background: #1f1f1f;
+  box-shadow: 0 2px 10px rgba(255,255,255,0.05);
+}
+
+label, input, textarea, button {
+  width: 100%;
+  font-size: 1em;
+}
+
+input, textarea {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: background var(--transition-time), border-color var(--transition-time), color var(--transition-time);
+}
+
+body.dark-mode input,
+body.dark-mode textarea {
+  background: #333;
+  border: 1px solid #555;
+  color: #f0f0f0;
+}
+
+button {
+  padding: 0.6em;
+  background-color: #0078d4;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #005fa3;
+}
+
+#modoBtn::before {
+  content: '🌙';
+}
+
+body.dark-mode #modoBtn::before {
+  content: '☀';
+}

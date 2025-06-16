@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contratos - ContratoCorp™</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+  <div class="logo">ContratoCorp™</div>
+  <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="index.html">Início</a></li>
+      <li><a href="contratos.html">Contratos</a></li>
+      <li><a href="gerador.html">Gerar Contrato</a></li>
+    </ul>
+  </nav>
+  <button id="modoBtn" title="Alternar Modo Escuro">🌙</button>
+</header>
+
+  <main>
+    <section>
+      <h2>Contratos Salvos</h2>
+      <div id="listaContratos">Carregando contratos...</div>
+    </section>
+  </main>
+
+  <div class="loader" id="loader"></div>
+
+  <script src="script.js"></script>
+  <script>
+    // Alternar modo escuro
+    document.getElementById('modoBtn').addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+    });
+
+    // Buscar e listar contratos
+    async function carregarContratos() {
+      const loader = document.getElementById('loader');
+      const lista = document.getElementById('listaContratos');
+      loader.style.display = 'block';
+      try {
+        const res = await fetch('/api/contratos');
+        const contratos = await res.json();
+
+        lista.innerHTML = '';
+        if (contratos.length === 0) {
+          lista.innerHTML = '<p>Nenhum contrato cadastrado.</p>';
+          return;
+        }
+
+        contratos.forEach(c => {
+          const div = document.createElement('div');
+          div.innerHTML = `
+            <h3>${c.titulo}</h3>
+            <p>${c.conteudo}</p>
+            <p><strong>Assinado por:</strong> ${c.assinatura}</p>
+            <hr/>
+          `;
+          lista.appendChild(div);
+        });
+      } catch (e) {
+        lista.innerHTML = '<p>Erro ao carregar contratos.</p>';
+      } finally {
+        loader.style.display = 'none';
+      }
+    }
+
+    carregarContratos();
+  </script>
+</body>
+</html>
